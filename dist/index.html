@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Message</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #fe9898, #f884e5);
+      color: #f0ebe1;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .message {
+      font-size: 2rem;
+      font-weight: 600;
+      max-width: 600px;
+      margin-bottom: 50px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .btn {
+      background: #fffcfc;
+      color: #be0791;
+      border: none;
+      padding: 16px 36px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(94, 3, 62, 0.6);
+    }
+    .btn:hover {
+      background: #000000;
+      box-shadow: 0 6px 15px rgba(255, 73, 161, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-audio" autoplay loop>
+    <source src="music1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="message">
+   I’m truly sorry for everything I’ve done that may have hurt you. I never meant to cause you pain. Thank you from the bottom of my heart for everything you’ve done for me. Your kindness means more than words can say "كل عام وانتي بألف خير" ❤ </div>
+
+  <a href="arrow-game.html" class="btn" role="button" title="Play the game">Play</a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio = document.getElementById('bg-audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const resumeAudio = () => {
+            audio.play();
+            document.removeEventListener('click', resumeAudio);
+          };
+          document.addEventListener('click', resumeAudio);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
